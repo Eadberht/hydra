@@ -37,17 +37,25 @@ void setup()
  
 void draw()
 {
+  //for coordinates fetched from the leap
+ PVector pointFinger=new PVector();
+ // for coordinates scaled to screen 
+ PVector cursor=new PVector(); 
+ 
  for (Hand hand : leap.getHands ()) {
-    println(hand.getFrontFinger().getPosition());
+   //this gets position of Finger
+    pointFinger=hand.getFrontFinger().getPosition();
   }
-  
+  //this is to scale it to the screen coordinates
+  cursor.x=map(pointFinger.x, -10.0, 10.0, 0, width);
+  cursor.y=map(pointFinger.x, -10.0, 10.0, 0, width);
   image(imgB, 0, 0);
   noStroke();
   
 
   for (int i = 0; i < NB_HYDRA; i++)
   {
-    tabHYDRA[i].process();
+    tabHYDRA[i].process(pointFinger);
   }
   for (int i = tabHYDRA[0].NB_POINTS-1; i >= 0; i--)//draw the tips first
   {

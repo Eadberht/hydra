@@ -37,7 +37,7 @@ class HYDRA
     }
   }
  
-  void process()
+  void process(PVector point)
   {
     time += step;
     //this was used for worms to follow the mouse 
@@ -70,7 +70,7 @@ class HYDRA
       delta.x += tmpX * cos(angle) - tmpY * sin(angle);//angle roatation of the oscillation
       delta.y += tmpX * sin(angle) + tmpY * cos(angle);//angle roatation of the oscillation
  
-      close = dist(pos[i].x,pos[i].y,mouseX,mouseY)/width;
+      close = dist(pos[i].x,pos[i].y,point.x,point.y)/width;
  
       delta.normalize();
       delta.mult(POINTS_DIST*close);
