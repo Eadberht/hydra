@@ -1,6 +1,6 @@
 class HYDRA
 {
-  final int LENGTH = 700;
+  final int LENGTH = 300;
   final float POINTS_DIST = 3;//distance between each point
   final int NB_POINTS = (int)(LENGTH/POINTS_DIST);
   final float AMPLITUDE = random(1.5, 2);
