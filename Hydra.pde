@@ -25,8 +25,8 @@ class HYDRA
   HYDRA(float p_radius, float p_angle, float x, float y)
   {
     int xx,yy;
-    xx = 0; // round(map(x,0.0,hspread,0.0,(float)width));
-    yy = height -  round(map(y,0.0,vspread,0.0,(float)height));
+    xx = round(map(x,0.0,1.0,0.0,(float)width));
+    yy = height -  round(map(y,0.0,1.0,0.0,(float)height));
     angle = p_angle;
     radius = p_radius;
     D = new PVector(POINTS_DIST*cos(angle), POINTS_DIST*sin(angle));
