@@ -2,10 +2,18 @@
 // mail: kontakt@diana-lange.de
 // web: diana-lange.de
 
+
 final int NB_HYDRA = 100;
 final float CELL_RADIUS = 45;
 HYDRA[] tabHYDRA = new HYDRA[NB_HYDRA];
+import de.voidplus.leapmotion.*;
 
+//sets up Leap
+LeapMotion leap;
+
+//Test week one, drawing dots on the canvas
+int height = 600;
+int width = 400;
 
 PImage imgB; 
 
@@ -13,6 +21,10 @@ void setup()
 {
   size(600, 400, P3D);
    imgB = loadImage("background.jpg");
+   // leap = new LeapMotion(this).withGestures("circle, swipe, screen_tap, key_tap");
+  // leap = new LeapMotion(this).withGestures("swipe"); // Leap detects only swipe gestures.
+   leap = new LeapMotion(this).withGestures();
+  
   //  strokeCap(ROUND);
   //  strokeJoin(ROUND);
    
@@ -25,7 +37,10 @@ void setup()
  
 void draw()
 {
-
+ for (Hand hand : leap.getHands ()) {
+    println(hand.getFrontFinger().getPosition());
+  }
+  
   image(imgB, 0, 0);
   noStroke();
   
