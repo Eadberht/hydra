@@ -9,20 +9,26 @@ HYDRA[] tabHYDRA = new HYDRA[NB_HYDRA];
 HYDRA[] secondHYDRA = new HYDRA[NB_HYDRA];
 HYDRA[] centerHYDRA = new HYDRA[NB_HYDRA];
 import de.voidplus.leapmotion.*;
+boolean teneighty = false;
 
 //sets up Leap
 LeapMotion leap;
 
 //Test week one, drawing dots on the canvas
-int height = 400;
-int width = 600;
+int height = 720; //400;
+int width = 1280; //600;
 
 PImage imgB; 
 
 void setup()
 {
-  size(width, height, P3D);
+  if (teneighty) {
+    width = 1920;
+    height = 1080;
+  } 
+  size(width,height,P3D);
    imgB = loadImage("corals.jpg");
+   
    // leap = new LeapMotion(this).withGestures("circle, swipe, screen_tap, key_tap");
   // leap = new LeapMotion(this).withGestures("swipe"); // Leap detects only swipe gestures.
    leap = new LeapMotion(this).withGestures();

@@ -1,6 +1,6 @@
 class HYDRA
 {
-  final int LENGTH = 300;
+  final int LENGTH = height/2; //300;
   final float POINTS_DIST = 3;//distance between each point
   final int NB_POINTS = (int)(LENGTH/POINTS_DIST);
   final float AMPLITUDE = random(1.5, 2);
@@ -20,8 +20,6 @@ class HYDRA
   color[] colors = new color[NB_POINTS];
   float colorAdjust = random(0, 20);
   
-  PVector center = new PVector(width/2,height/2);
- 
   HYDRA(float p_radius, float p_angle, float x, float y)
   {
     int xx,yy;
