@@ -39,9 +39,9 @@ void setup()
   for (int i = 0; i < NB_HYDRA; i++)
   {
     //this creates each arm (1/arm)
-      centerHYDRA[i] = new HYDRA(CELL_RADIUS, -PI/2, 0.3+i*0.015,0.0);
+     centerHYDRA[i] = new HYDRA(CELL_RADIUS, ((float)i/NB_HYDRA) * PI/2 - PI*3/4, 0.3+i*0.015,0.0);
      tabHYDRA[i] = new HYDRA(CELL_RADIUS, ((float)i/NB_HYDRA)*(-PI/2), 0.0, 0.0);
-     secondHYDRA[i] = new HYDRA(CELL_RADIUS, ((float)i/NB_HYDRA)*(PI/2) + PI*3, 1.0, 0.0);
+     secondHYDRA[i] = new HYDRA(CELL_RADIUS, ((float)i/NB_HYDRA)*(PI/2) + PI, 1.0, 0.0);
   }
 }
  
@@ -56,20 +56,19 @@ void draw()
    //this gets position of Finger
     pointFinger=hand.getFrontFinger().getPosition();
   }
+   
   //this is to scale it to the screen coordinates
   cursor.x=map(pointFinger.x, -10.0, 10.0, 0, width);
-  cursor.y=map(pointFinger.x, -10.0, 10.0, 0, width);
+  cursor.y=map(pointFinger.y, -10.0, 10.0, 0, height);
   image(imgB, 0, 0);
   noStroke();
   
-
   for (int i = 0; i < NB_HYDRA; i++)
-  {
-    tabHYDRA[i].process(pointFinger);
-    secondHYDRA[i].process(pointFinger);
-    centerHYDRA[i].process(pointFinger);
-
-  }
+    {
+      tabHYDRA[i].process(pointFinger);
+      secondHYDRA[i].process(pointFinger);
+      centerHYDRA[i].process(pointFinger);
+    }
   for (int i = tabHYDRA[0].NB_POINTS-1; i >= 0; i--)//draw the tips first
   {
     for (int j = 0; j < NB_HYDRA; j++)

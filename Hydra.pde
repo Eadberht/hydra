@@ -1,6 +1,6 @@
 class HYDRA
 {
-  final int LENGTH = height/2; //300;
+  final int LENGTH = height*2/3; //300;
   final float POINTS_DIST = 3;//distance between each point
   final int NB_POINTS = (int)(LENGTH/POINTS_DIST);
   final float AMPLITUDE = random(1.5, 2);
@@ -56,13 +56,8 @@ class HYDRA
       delta.y -= coeff * (delta.y - D.y);
       
 
- 
-      
-//  repulsed from center 
-//      delta.x += pos[i].x - (width/2);
-//      delta.y += pos[i].y - (height/2);
       //repulsed from cursor?
-      float close = 0;
+      float close = 1;
       float tmpX = i * period / NB_POINTS;
       float tmpY = AMPLITUDE * sin(i * s + time) * cos(HALF_PI + HALF_PI * i / NB_POINTS);
       delta.x += tmpX * cos(angle) - tmpY * sin(angle);//angle roatation of the oscillation
